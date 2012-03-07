@@ -1,0 +1,43 @@
+application: guardianpicturegrid
+version: 1
+runtime: python
+api_version: 1
+
+handlers:
+
+################################################################################
+# Handlers for the static stuff, img, css, js etc.
+################################################################################
+
+- url: /imgs
+  static_dir: imgs
+
+- url: /img
+  static_dir: imgs
+
+- url: /css
+  static_dir: css
+
+- url: /js
+  static_dir: js
+
+- url: /favicon.ico
+  static_files: imgs/favicon.ico
+  upload: imgs/favicon.ico
+
+
+
+################################################################################
+# api
+################################################################################
+
+- url: /api/getLatest
+  script: api/getLatest.py
+
+
+################################################################################
+#
+################################################################################
+
+- url: .*
+  script: index.py

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Guardian Picture Grid (setup)</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/bootstrap-responsive.min.css" rel="stylesheet" />
+  </head>
+  <body>
+
+    <div class="container">
+
+      <div class="content">
+
+        <div class="row">
+          <div class="span6 offset3">
+            <div class="page-header">
+              <h1>Setup</h1>
+            </div>
+            <div>
+              <p>
+                To be able to display the images large enough you need to have a partner tier
+                Guardian API key, please enter your API key below
+              </p>
+              <form id="apiKeyCheck" class="well">
+                <div class="control-group">
+                  <label>Guardian API key</label>
+                  <input type="text" class="span3" id="apiKey"><span class="help-inline"></span><br />
+                </div>
+                <button type="submit" class="btn">Submit</button>
+              </form>
+            </div>
+            <div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js?v=0.1"></script>
+    <script src="js/setup.js?v=0.1"></script>
+    <script>
+        $(document).ready(function() {
+            control.init();
+        });
+    </script>
+  </body>
+</html>
