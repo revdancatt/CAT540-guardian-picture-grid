@@ -1,5 +1,7 @@
 control = {
     
+    page: 1,
+    
     init: function() {
 
         $('#apiKeyCheck').submit( function() {
@@ -43,6 +45,7 @@ control = {
                 }
 
                 //  Now that worked we need to store the API key and start the backfilling
+                $('#getApiKey').fadeOut('slow', function() {$('#backfilling').fadeIn('fast');});
                 control.setApiKey();
 
             }
@@ -52,6 +55,25 @@ control = {
 
     setApiKey: function() {
 
+        var url = '/api/setApiKey?apiKey=' + $('#apiKey').val();
+
+        $.getJSON(encodeURI(url),
+            function(json) {
+
+                //  if everything went ok, then we can move on. Otherwise, ummm, something
+                if ('results' in json && 'status' in json.results && json.results.status == 'ok') {
+                    $('#backfilling h2').html(json.results.stories.length + '/60');
+                    control.backfill();
+                }
+
+            }
+        );
+
+    },
+
+    backfill: function() {
+
+        utils.log('backfilling!');
 
     }
 

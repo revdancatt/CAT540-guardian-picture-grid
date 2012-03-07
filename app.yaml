@@ -31,6 +31,12 @@ handlers:
 # api
 ################################################################################
 
+- url: /api/setApiKey
+  script: api/setApiKey.py
+
+- url: /api/backfill
+  script: api/backfill.py
+
 - url: /api/getLatest
   script: api/getLatest.py
 

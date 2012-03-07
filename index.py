@@ -30,8 +30,20 @@ class MainHandler(webapp.RequestHandler):
             self.response.out.write(template.render(path, template_values))
         else:
 
-            path = os.path.join(os.path.dirname(__file__), 'templates/index.html')
-            self.response.out.write(template.render(path, template_values))
+            #   Grab the JSON out of the settings row
+            settingsJSON = simplejson.loads(settingsRows[0].json)
+
+            #   If we don't have enough stories then we need to go to the
+            #   setup page and let it carry on backfilling
+            if len(settingsJSON['storiesList']) < 60:
+                template_values['backfilling'] = True
+                template_values['backfill'] = len(settingsJSON['storiesList'])
+                path = os.path.join(os.path.dirname(__file__), 'templates/setup.html')
+                self.response.out.write(template.render(path, template_values))
+            else:
+                template_values['settingsJSON'] = settingsJSON
+                path = os.path.join(os.path.dirname(__file__), 'templates/index.html')
+                self.response.out.write(template.render(path, template_values))
 
 
 def main():

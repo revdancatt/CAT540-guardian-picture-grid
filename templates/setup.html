@@ -5,9 +5,21 @@
     <title>Guardian Picture Grid (setup)</title>
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/bootstrap-responsive.min.css" rel="stylesheet" />
+    <style>
+      {% if backfilling %}
+        #getApiKey {
+          display: none;
+        }
+      {% else %}
+        #backfilling {
+          display: none;
+        }
+      {% endif %}
+    </style>
   </head>
   <body>
 
+    {{ backfill }}
     <div class="container">
 
       <div class="content">
@@ -17,7 +29,8 @@
             <div class="page-header">
               <h1>Setup</h1>
             </div>
-            <div>
+
+            <div id="getApiKey">
               <p>
                 To be able to display the images large enough you need to have a partner tier
                 Guardian API key, please enter your API key below
@@ -30,7 +43,21 @@
                 <button type="submit" class="btn">Submit</button>
               </form>
             </div>
-            <div>
+
+            <div id="backfilling">
+              <p>
+                Now we need to make sure we have at least 60 stories to start with.
+              </p>
+              <div  class="well">
+                <h1>Backfilling</h1>
+                {% if backfilling %}
+                  <h2>{{ backfill }}/60<h2>
+                {% else %}
+                  <h2>0/60</h2>
+                {% endif %}
+              </div>
+            </div>
+
           </div>
         </div>
 
@@ -44,6 +71,9 @@
     <script>
         $(document).ready(function() {
             control.init();
+            {% if backfilling %}
+            control.backfill();
+            {% endif %}
         });
     </script>
   </body>
