@@ -17,6 +17,42 @@ control = {
             $('#apiKey').focus();
             return false;
         }
+
+        //  test the API key level
+        var url = 'http://content.guardianapis.com/search?page-size=1&format=json&api-key=' + $('#apiKey').val() + '&callback=?';
+        $.getJSON(encodeURI(url),
+            function(json) {
+
+                utils.log(json);
+                //  check to see if we have an error
+                if ('response' in json && 'status' in json.response && json.response.status == 'error') {
+                    $('#apiKeyCheck .control-group').addClass('error');
+                    $('#apiKeyCheck .help-inline').html(json.response.message);
+                    $('#apiKey').focus();
+                    return false;
+                }
+
+                //  if we are here then we need to check the userTier
+                if ('response' in json && 'status' in json.response && json.response.status == 'ok' && 'userTier' in json.response) {
+                    if (json.response.userTier != 'partner' && json.response.userTier != 'internal') {
+                        $('#apiKeyCheck .control-group').addClass('error');
+                        $('#apiKeyCheck .help-inline').html('That is not a partner tier api key');
+                        $('#apiKey').focus();
+                        return false;
+                    }
+                }
+
+                //  Now that worked we need to store the API key and start the backfilling
+                control.setApiKey();
+
+            }
+        );
+
+    },
+
+    setApiKey: function() {
+
+
     }
 
 };
