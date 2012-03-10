@@ -25,7 +25,6 @@ control = {
         $.getJSON(encodeURI(url),
             function(json) {
 
-                utils.log(json);
                 //  check to see if we have an error
                 if ('response' in json && 'status' in json.response && json.response.status == 'error') {
                     $('#apiKeyCheck .control-group').addClass('error');
@@ -61,7 +60,7 @@ control = {
             function(json) {
 
                 //  if everything went ok, then we can move on. Otherwise, ummm, something
-                if ('results' in json && 'status' in json.results && json.results.status == 'ok') {
+                if ('results' in json && 'status' in json && json.status == 'ok') {
                     $('#backfilling h2').html(json.results.stories.length + '/60');
                     control.backfill();
                 }
