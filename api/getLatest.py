@@ -1,0 +1,24 @@
+#!/usr/bin/env python
+import simplejson
+from admin.models import Settings
+from google.appengine.api import memcache
+
+memkey = 'settings'
+
+itemsRows = memcache.get(memkey)
+if itemsRows is None:
+    itemsRows = Settings.all()
+    memcache.add(memkey, itemsRows, 60 * 1)
+
+if itemsRows.count() == 0:
+    newResults = {'stat': 'error'}
+else:
+    results = simplejson.loads(itemsRows[0].json)
+    del results['rejects']
+    del results['rejectsList']
+    newResults = {'stat': 'ok', 'results': results}
+
+print 'Cache-Control: public,max-age=60'
+print 'Content-Type: application/json; charset=UTF-8'
+print ''
+print simplejson.dumps(newResults)
