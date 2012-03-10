@@ -1,0 +1,5 @@
+cron:
+
+- description: Fetch latest stuff
+  url: /admin/cron/getLatest
+  schedule: every 1 minutes
