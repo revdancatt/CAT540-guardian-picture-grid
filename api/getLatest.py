@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 import os
-import sys
 import simplejson
 from admin.models import Settings
 from google.appengine.api import memcache
