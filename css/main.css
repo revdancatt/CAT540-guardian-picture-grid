@@ -29,6 +29,7 @@ div.container {
     -moz-opacity: 0;
     filter:alpha(opacity=0);
     z-index: 100;
+    line-height: 2em;
 }
 
 div.card,
@@ -50,6 +51,8 @@ div.face img {
 .back {
     background: #F3F3F3;
     display: none;
+    font-size: 1em;
+    cursor: pointer;
 }
 
 .back h1,

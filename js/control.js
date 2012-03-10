@@ -4,13 +4,10 @@ control = {
     reloadTmr: null,
     imgWidth: 460,
     imgHeight: 276,
+    fontsize: '1em',
     resizeTmr: null,
 
     init: function() {
-
-        var fit = parseInt($('body').width()/440, 10)+1;
-        control.imgWidth = parseInt($('body').width()/fit, 10);
-        control.imgHeight = parseInt(276 * control.imgWidth/460, 10);
 
         this.fetchStories(60, true);
         this.reloadTmr = setInterval("control.fetchStories(10, false)", 60000);
@@ -18,6 +15,7 @@ control = {
         $(window).resize(function() {
             utils.windowResized();
         });
+        utils.windowResized();
 
     },
 
@@ -43,7 +41,7 @@ control = {
                         var story = json.results.stories[results[i]];
 
                         //  The main div that's going to hold the front and back of the story 'card'
-                        var d = $('<div>').addClass('container').css({'width': control.imgWidth, 'height': control.imgHeight});
+                        var d = $('<div>').addClass('container').css({'width': control.imgWidth, 'height': control.imgHeight, 'font-size': control.fontsize + 'em'});
                         var c = $('<div>').addClass('card');
 
                         d.mouseenter(function() {
@@ -117,10 +115,18 @@ utils = {
 
     windowResized: function() {
 
+        //  work out the image sizes
         var fit = parseInt($('body').width()/440, 10)+1;
         control.imgWidth = parseInt($('body').width()/fit, 10);
         control.imgHeight = parseInt(276 * control.imgWidth/460, 10);
-        $('div.container').css({'width': control.imgWidth, 'height': control.imgHeight});
+
+        //  work out the font size
+        //  at 440px wide the biggest font size should be 1em and line-height 1.2em
+        //  220px = 0.5em
+        control.fontsize = ((control.imgWidth - 220)/220*0.5)+0.5;
+
+        //  Now set them all up
+        $('div.container').css({'width': control.imgWidth, 'height': control.imgHeight, 'font-size': control.fontsize + 'em'});
 
     }
 
