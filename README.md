@@ -1,5 +1,17 @@
-*Work In Progress*
+Guardian Picture Grid
+=====================
 
-Totally no point in checking this out yet, doesn't do anything yet.
+![Screen Shot](https://github.com/revdancatt/GuardianPictureGrid/raw/master/src/screenshot.jpg)
 
-At some point in the future it'll show images from the latest Guardian stories.
+Which can be seen running here (not tested in IE)...
+
+http://guardianpicturegrid.appspot.com/
+
+A few people asked me what it could look like having a grid of iamges from the latest Guardian stories. So I created a quick sketch which pulls in the latest stuff from the Guardian API.
+
+I've put the code here incase it's useful for anyone *but* because it uses the fullsized 460 images you'll need a _partner tier_ API key to make it run (unless you hack the code to use just the thumbnails). When you 1st run the app in the browser it'll ask you for your API key.
+
+Secondary goal
+--------------
+
+The other reason for writing this code was experimenting with the framework of making the _owner_ of the application enter their own Guardian API key, which then gets placed into the database (or in a cookie/local storage if the project is client side only). Just so I don't have to make sure I don't accidently commit my own API key into github, or make a user have to edit a config file to get things running.
