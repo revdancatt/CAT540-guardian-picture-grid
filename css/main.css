@@ -28,6 +28,7 @@ div.container {
     opacity: 0;
     -moz-opacity: 0;
     filter:alpha(opacity=0);
+    z-index: 100;
 }
 
 div.card,
@@ -83,4 +84,44 @@ div.face img {
 
 .back .photocredit p {
     margin: 4px;
+}
+
+#tab1 {
+    position: fixed;
+    right: 0;
+    bottom: 180px;
+    z-index: 500;
+    width: 65px;
+    height: 60px;
+    background: url(../img/tab.png) -195px 0;
+}
+
+#tab2 {
+    position: fixed;
+    right: 0;
+    bottom: 120px;
+    z-index: 500;
+    width: 130px;
+    height: 60px;
+    background: url(../img/tab.png) -130px -60px;
+}
+
+#tab3 {
+    position: fixed;
+    right: 0;
+    bottom: 60px;
+    z-index: 500;
+    width: 195px;
+    height: 60px;
+    background: url(../img/tab.png) -65px -120px;
+}
+
+#tab4 {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    z-index: 500;
+    width: 260px;
+    height: 60px;
+    background: url(../img/tab.png) 0 -180px;
 }

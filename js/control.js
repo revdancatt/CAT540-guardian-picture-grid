@@ -46,7 +46,7 @@ control = {
                         var d = $('<div>').addClass('container').css({'width': control.imgWidth, 'height': control.imgHeight});
                         var c = $('<div>').addClass('card');
 
-                        d.mouseenter(function() {
+                        d.mouseover(function() {
                             control.temp = $(this);
                             $(this).find('.back').stop(true, true).fadeIn(333);
                         });
