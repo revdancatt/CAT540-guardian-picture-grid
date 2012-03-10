@@ -33,7 +33,7 @@ handlers:
 
 - url: /admin/cron/getLatest
   script: admin/cron/getLatest.py
-
+  login: admin
 
 
 
