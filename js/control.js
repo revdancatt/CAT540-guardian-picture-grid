@@ -38,7 +38,7 @@ control = {
 
                     //  check to see if we already have it
                     if (!(results[i] in control.apiUrlHash)) {
-                        control.apiUrlHash[results[i].apiUrl] = -1;
+                        control.apiUrlHash[results[i]] = -1;
 
                         var story = json.results.stories[results[i]];
 
@@ -81,7 +81,11 @@ control = {
                         a.append(c);
                         d.append(a);
 
-                        $('#bigImageHolder').prepend(d);
+                        if (firstrun) {
+                            $('#bigImageHolder').append(d);
+                        } else {
+                            $('#bigImageHolder').prepend(d);
+                        }
 
                     }
                 }
