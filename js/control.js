@@ -8,7 +8,7 @@ control = {
 
     init: function() {
 
-        var fit = parseInt($('body').width()/460, 10)+1;
+        var fit = parseInt($('body').width()/440, 10)+1;
         control.imgWidth = parseInt($('body').width()/fit, 10);
         control.imgHeight = parseInt(276 * control.imgWidth/460, 10);
 
@@ -46,7 +46,7 @@ control = {
                         var d = $('<div>').addClass('container').css({'width': control.imgWidth, 'height': control.imgHeight});
                         var c = $('<div>').addClass('card');
 
-                        d.mouseover(function() {
+                        d.mouseenter(function() {
                             control.temp = $(this);
                             $(this).find('.back').stop(true, true).fadeIn(333);
                         });
@@ -117,7 +117,7 @@ utils = {
 
     windowResized: function() {
 
-        var fit = parseInt($('body').width()/460, 10)+1;
+        var fit = parseInt($('body').width()/440, 10)+1;
         control.imgWidth = parseInt($('body').width()/fit, 10);
         control.imgHeight = parseInt(276 * control.imgWidth/460, 10);
         $('div.container').css({'width': control.imgWidth, 'height': control.imgHeight});
