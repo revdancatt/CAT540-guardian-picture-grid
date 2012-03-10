@@ -73,8 +73,34 @@ control = {
 
     backfill: function() {
 
-        utils.log('backfilling!');
+        var url = '/api/backfill?page=' + control.page;
 
+        $.getJSON(encodeURI(url),
+            function(json) {
+
+                //  if everything went ok, then we can move on. Otherwise, ummm, something
+                if ('status' in json && json.status == 'ok') {
+                    $('#backfilling h2').html(json.msg + '/60');
+                    if (parseInt(json.msg, 10) < 60) {
+                        control.page++;
+                        control.backfill();
+                    } else {
+                        control.finish();
+                    }
+                }
+
+            }
+        );
+
+    },
+
+    finish: function() {
+
+        $('#backfilling h2').remove();
+        $('#backfilling h1').html('Finished');
+        setTimeout(function() { $('#backfilling').fadeOut(666);}, 1500);
+        setTimeout(function() { $('.content').fadeOut(666);}, 2000);
+        setTimeout(function() { document.location = '/'; }, 2700);
     }
 
 };
