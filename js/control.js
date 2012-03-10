@@ -89,12 +89,12 @@ control = {
                 }
 
                 //  trim off any more than 60 results
-                while ($('div.bigImage').length > 60) {
-                    var apiUrl = $('div.bigImage').last().data('apiUrl');
+                while ($('div.container').length > 60) {
+                    var apiUrl = $('div.container').last().data('apiUrl');
                     if (apiUrl in control.apiUrlHash) {
                         delete control.apiUrlHash[apiUrl];
                     }
-                    $('div.bigImage').last().remove();
+                    $('div.container').last().remove();
                 }
 
             }
