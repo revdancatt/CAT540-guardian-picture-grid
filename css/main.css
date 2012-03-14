@@ -89,42 +89,41 @@ div.face img {
     margin: 4px;
 }
 
-#tab1 {
+.tab {
     position: fixed;
     right: 0;
-    bottom: 180px;
     z-index: 500;
-    width: 65px;
-    height: 60px;
-    background: url(../img/tab.png) -195px 0;
 }
 
-#tab2 {
-    position: fixed;
-    right: 0;
-    bottom: 120px;
-    z-index: 500;
-    width: 130px;
-    height: 60px;
-    background: url(../img/tab.png) -130px -60px;
+#tab1 { bottom: 180px; width: 64px;  height: 60px; background: url(../img/tab.png) -192px   0; }
+#tab2 { bottom: 120px; width: 128px; height: 60px; background: url(../img/tab.png) -128px -60px; }
+#tab3 { bottom: 60px;  width: 192px; height: 60px; background: url(../img/tab.png)  -64px -120px; }
+#tab4 { bottom: 0;     width: 256px; height: 60px; background: url(../img/tab.png)    0   -180px; }
+
+@media screen and (max-width: 399px) {
+    #tab1 { bottom: 45px;  width: 16px; height: 15px; background: url(../img/tab25.png) -48px   0; }
+    #tab2 { bottom: 30px;  width: 32px; height: 15px; background: url(../img/tab25.png) -32px -15px; }
+    #tab3 { bottom: 15px;  width: 48px; height: 15px; background: url(../img/tab25.png) -16px -30px; }
+    #tab4 { bottom: 0;     width: 64px; height: 15px; background: url(../img/tab25.png)   0   -45px; }
 }
 
-#tab3 {
-    position: fixed;
-    right: 0;
-    bottom: 60px;
-    z-index: 500;
-    width: 195px;
-    height: 60px;
-    background: url(../img/tab.png) -65px -120px;
+@media screen and (min-width: 400px) {
+    #tab1 { bottom: 90px;  width: 32px;  height: 30px; background: url(../img/tab50.png) -96px   0; }
+    #tab2 { bottom: 60px;  width: 64px;  height: 30px; background: url(../img/tab50.png) -64px -30px; }
+    #tab3 { bottom: 30px;  width: 96px;  height: 30px; background: url(../img/tab50.png) -32px -60px; }
+    #tab4 { bottom: 0;     width: 128px; height: 30px; background: url(../img/tab50.png)   0   -90px; }
 }
 
-#tab4 {
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    z-index: 500;
-    width: 260px;
-    height: 60px;
-    background: url(../img/tab.png) 0 -180px;
+@media screen and (min-width: 800px) {
+    #tab1 { bottom: 135px; width: 48px;  height: 45px; background: url(../img/tab75.png) -144px    0; }
+    #tab2 { bottom:  90px; width: 96px;  height: 45px; background: url(../img/tab75.png)  -96px  -45px; }
+    #tab3 { bottom:  45px; width: 144px; height: 45px; background: url(../img/tab75.png)  -48px  -90px; }
+    #tab4 { bottom:   0;   width: 192px; height: 45px; background: url(../img/tab75.png)    0   -135px; }
+}
+
+@media screen and (min-width: 1600px) {
+    #tab1 { bottom: 180px; width: 64px;  height: 60px; background: url(../img/tab.png) -192px   0; }
+    #tab2 { bottom: 120px; width: 128px; height: 60px; background: url(../img/tab.png) -128px -60px; }
+    #tab3 { bottom: 60px;  width: 192px; height: 60px; background: url(../img/tab.png)  -64px -120px; }
+    #tab4 { bottom: 0;     width: 256px; height: 60px; background: url(../img/tab.png)    0   -180px; }
 }
