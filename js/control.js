@@ -6,25 +6,74 @@ control = {
     imgHeight: 276,
     fontsize: '1em',
     resizeTmr: null,
+    updateTime: null,
+    updateTmr: null,
+    hideUpdateBar: 0,
+    pageY: 100,
 
     init: function() {
 
+        //  Set the update time (for display) to 60s into the future
+        this.updateTime = new Date() / 1000 + 60;
+        
+        // Go fetch the 1st 60 stories (and this is the first time, so we'll do some paging)
         this.fetchStories(60, true);
+
+        //  set the reload time to 60 seconds
         this.reloadTmr = setInterval("control.fetchStories(10, false)", 60000);
 
-        $(window).resize(function() {
-            utils.windowResized();
+        //  set a show/hidden flag onto the header bar
+        $('#header').data('hidden', false);
+
+        //  This updates the "time till next update" once every second
+        //  in additon it hides the header bar if the mouse hasn't moved in
+        //  20 seconds (and the mouse isn't in the top section of the page)
+        //  (( and it's not already hidden))
+        this.updateTmr = setInterval(function() {
+            $('#header div').html('Next update: ' + Math.ceil(control.updateTime - (new Date() / 1000)) + '<small>s</small>');
+            control.hideUpdateBar++;
+            if (control.hideUpdateBar >= 20) {
+                if (control.pageY > 36 && !$('#header').data('hidden')) {
+                    control.hideUpdateBar = 0;
+                    $('#header').data('hidden', true);
+                    $('#header').slideUp(1333);
+                }
+            }
+        }, 1000);
+
+
+        //  If the mouse moves to the top of the screen then show the update bar
+        $(document).bind('mouseover', function(e) {
+            control.pageY = e.pageY;
+            if (control.pageY <= 36 && $('#header').data('hidden')) {
+                $('#header').data('hidden', false);
+                $('#header').slideDown(666);
+            } else {
+                control.hideUpdateBar = 0;
+            }
         });
-        utils.windowResized();
+
+        //  Do calculations if the window gets resized
+        $(window).bind('resize', function() { utils.windowResized(); });
+
+        //  call the resize function in a secon after page load, juat 'cause
+        setTimeout("utils.windowResized()", 1000);
 
     },
 
     fetchStories: function(limit, firstrun) {
 
+        //  reset the updateTime and hide the text in the header
+        this.updateTime = new Date() / 1000 + 60;
+        $('#header div').stop(true, false).fadeTo(333, 0);
+
         var url = '/api/getLatest';
 
         $.getJSON(encodeURI(url),
             function(json) {
+
+                //  show the text in the header
+                $('#header div').stop(true, false).fadeTo(666, 1);
 
                 var results = json.results.storiesList;
                 if (!firstrun) {
@@ -116,8 +165,8 @@ utils = {
     windowResized: function() {
 
         //  work out the image sizes
-        var fit = parseInt($('body').width()/440, 10)+1;
-        control.imgWidth = parseInt($('body').width()/fit, 10);
+        var fit = parseInt($('body').innerWidth()/440, 10)+1;
+        control.imgWidth = parseInt($('body').innerWidth()/fit, 10);
         control.imgHeight = parseInt(276 * control.imgWidth/460, 10);
 
         //  work out the font size
