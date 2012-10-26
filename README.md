@@ -1,7 +1,7 @@
 Guardian Picture Grid
 =====================
 
-![Screen Shot](https://github.com/revdancatt/GuardianPictureGrid/raw/master/src/screenshot.jpg)
+![Screen Shot](https://github.com/revdancatt/CAT540-guardian-picture-grid/raw/master/src/screenshot.jpg)
 
 Which can be seen running here (not tested in IE)...
 
