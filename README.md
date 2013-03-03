@@ -1,15 +1,14 @@
+![Screen Shot](http://cattopus23.com/img/panel-CAT540.jpg)
+
 Guardian Picture Grid
 =====================
 
-![Screen Shot](https://github.com/revdancatt/CAT540-guardian-picture-grid/raw/master/src/screenshot.jpg)
-
-Which can be seen running here (not tested in IE)...
-
-http://guardianpicturegrid.appspot.com/
 
 A few people asked me what it could look like having a grid of iamges from the latest Guardian stories. So I created a quick _resizable_ sketch which pulls in the latest stuff from the Guardian API. You can run it full screen right down to a narrow single column :)
 
 I've put the code here incase it's useful for anyone *but* because it uses the fullsized 460 images you'll need a _partner tier_ API key to make it run (unless you hack the code to use just the thumbnails). When you 1st run the app in the browser it'll ask you for your API key.
+
++ Running: http://guardianpicturegrid.appspot.com/
 
 Secondary goal
 --------------
