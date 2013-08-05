@@ -1,11 +1,7 @@
-CAT540 Guardian Picture Grid
-============================
-
 ![Screen Shot](http://cattopus23.com/img/panel-CAT540.jpg)
 
-Guardian Picture Grid
-=====================
-
+CAT540 Guardian Picture Grid
+============================
 
 A few people asked me what it could look like having a grid of iamges from the latest Guardian stories. So I created a quick _resizable_ sketch which pulls in the latest stuff from the Guardian API. You can run it full screen right down to a narrow single column :)
 
