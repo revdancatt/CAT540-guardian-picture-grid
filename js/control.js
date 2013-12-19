@@ -95,7 +95,7 @@ control = {
 
                         d.mouseenter(function() {
                             control.temp = $(this);
-                            $(this).find('.back').stop(true, true).fadeIn(333);
+                            $(this).find('.back').stop(true, true).fadeTo(333, 0.75);
                         });
                         d.mouseleave(function() {
                             $(this).find('.back').stop(true, true).fadeOut(666);
@@ -107,7 +107,7 @@ control = {
                         var front = $('<div>').addClass('face front');
                         var img = $('<img>').addClass('bigImage').attr('src', story.imgUrl);
                         img.load( function() {
-                            $(this).parents('.container').fadeTo(666, 1);
+                            $(this).parents('.container').fadeTo(666, 0.75);
                         });
 
 
